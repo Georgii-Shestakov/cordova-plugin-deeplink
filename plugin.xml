@@ -1,7 +1,27 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin id="cordova-plugin-open-deep-link-d8ii" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Open Deep Link</name>
+    
     <js-module name="open-deep-link" src="www/open-deep-link.js">
         <clobbers target="deepLink" />
     </js-module>
+
+    <platform name="android">
+        <config-file parent="/*" target="AndroidManifest.xml">
+        </config-file>
+        <source-file src="src/android/OpenDeepLink.java" target-dir="src/com/d8ii/cordova/plugins/openDeepLink" />
+    </platform>
+
+    <platform name="browser">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Device">
+                <param name="browser-package" value="openDeepLink" />
+            </feature>
+        </config-file>
+
+        <js-module src="src/browser/OpenDeepLink.js" name="OpenDeepLink">
+            <runs />
+        </js-module>
+    </platform>
+
 </plugin>
