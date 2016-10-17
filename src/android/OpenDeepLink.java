@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
+import android.content.Intent;
 
 /**
  * This class echoes a string called from JavaScript.
@@ -27,10 +29,12 @@ public class OpenDeepLink extends CordovaPlugin {
 
         if (link != null && link.length() > 0) {
 
+            Context context=this.cordova.getActivity().getApplicationContext();
+
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(link));
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-            startActivity(intent);
+            context.startActivity(intent);
 
             callbackContext.success();
         } else {
