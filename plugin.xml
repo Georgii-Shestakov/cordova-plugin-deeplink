@@ -3,7 +3,7 @@
     <name>Open Deep Link</name>
     
     <js-module name="open-deep-link" src="www/open-deep-link.js">
-        <clobbers target="deepLink" />
+        <clobbers target="deeplinkplugin" />
     </js-module>
 
     <platform name="android">
